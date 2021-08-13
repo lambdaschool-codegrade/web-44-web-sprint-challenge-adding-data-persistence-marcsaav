@@ -4,7 +4,7 @@ const createTask = async (task) => {
     const ids = await db('tasks').insert(task)
     const taskToChange = await db('tasks').where('task_id', ids[0])
     const taskToGive = {
-        ...taskToChange,
+        ...taskToChange[0],
         task_completed: false
     }
     return taskToGive
