@@ -5,7 +5,7 @@ const createProject = async (project) => {
     const pro = await db('projects').where('project_id', ids)
     const projectToGive = {
         ...pro[0],
-        project_completed: false
+        project_completed: pro[0].project_completed === 1 ? true : false
     }
     return projectToGive
 }
