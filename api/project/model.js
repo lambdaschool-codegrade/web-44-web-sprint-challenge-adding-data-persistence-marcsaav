@@ -1,7 +1,8 @@
 const db = require('../../data/dbConfig')
 
 const createProject = async (project) => {
-    const pro = await db('projects').insert(project)
+    const ids = await db('projects').insert(project)
+    const pro = await db('projects').where('project_id', ids[0])
     const projectToGive = {
         ...pro,
         project_completed: false
